@@ -1,10 +1,10 @@
-package org.xproce.testgpt.web;
+package org.xproce.ZENIKA.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.xproce.testgpt.entities.Salle;
-import org.xproce.testgpt.entities.TypeReunion;
-import org.xproce.testgpt.metier.*;
+import org.xproce.ZENIKA.entities.Salle;
+import org.xproce.ZENIKA.entities.TypeReunion;
+import org.xproce.ZENIKA.metier.*;
 
 import java.util.List;
 

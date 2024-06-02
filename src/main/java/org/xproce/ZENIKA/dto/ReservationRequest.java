@@ -1,8 +1,8 @@
-package org.xproce.testgpt.dto;
+package org.xproce.ZENIKA.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.xproce.testgpt.entities.TypeReunion;
+import org.xproce.ZENIKA.entities.TypeReunion;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

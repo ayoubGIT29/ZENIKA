@@ -1,8 +1,7 @@
-package org.xproce.testgpt.entities;
+package org.xproce.ZENIKA.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.xproce.testgpt.entities.Equipement;
 
 import java.util.List;
 

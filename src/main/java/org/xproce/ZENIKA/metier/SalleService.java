@@ -1,11 +1,11 @@
-package org.xproce.testgpt.metier;
+package org.xproce.ZENIKA.metier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xproce.testgpt.entities.Equipement;
-import org.xproce.testgpt.entities.Salle;
-import org.xproce.testgpt.entities.TypeReunion;
-import org.xproce.testgpt.repositories.SalleRepository;
+import org.xproce.ZENIKA.entities.Equipement;
+import org.xproce.ZENIKA.entities.Salle;
+import org.xproce.ZENIKA.entities.TypeReunion;
+import org.xproce.ZENIKA.repositories.SalleRepository;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,8 +1,8 @@
-package org.xproce.testgpt.repositories;
+package org.xproce.ZENIKA.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.xproce.testgpt.entities.Reservation;
-import org.xproce.testgpt.entities.Salle;
+import org.xproce.ZENIKA.entities.Reservation;
+import org.xproce.ZENIKA.entities.Salle;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,12 +1,11 @@
-package org.xproce.testgpt;
+package org.xproce.ZENIKA;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.xproce.testgpt.entities.Equipement;
-import org.xproce.testgpt.entities.Salle;
-import org.xproce.testgpt.repositories.SalleRepository;
+import org.xproce.ZENIKA.entities.Equipement;
+import org.xproce.ZENIKA.entities.Salle;
+import org.xproce.ZENIKA.repositories.SalleRepository;
 
 import java.util.Arrays;
 import java.util.Collections;
