@@ -24,7 +24,7 @@ public class SalleService {
                 .collect(Collectors.toList());
     }
 
-    private List<Equipement> equipementsRequis(TypeReunion typeReunion) {
+    public List<Equipement> equipementsRequis(TypeReunion typeReunion) {
         switch (typeReunion) {
             case VC:
                 return Arrays.asList(Equipement.ECRAN, Equipement.PIEUVRE, Equipement.WEBCAM);
