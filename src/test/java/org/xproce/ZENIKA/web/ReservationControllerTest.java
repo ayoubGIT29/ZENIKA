@@ -42,7 +42,7 @@ class ReservationControllerTest {
     }
 
     @Test
-    void testReserveSalleSuccess() throws Exception {
+    void testReserveRoomsSuccess() throws Exception {
         ReservationRequest reservationRequest = new ReservationRequest();
         reservationRequest.setDate(LocalDate.now());
         reservationRequest.setDebut(LocalTime.of(10, 0));
@@ -66,7 +66,7 @@ class ReservationControllerTest {
     }
 
     @Test
-    void testReserveSalleInvalidTimeException() throws Exception {
+    void testReserveRoomsInvalidTimeException() throws Exception {
         ReservationRequest reservationRequest = new ReservationRequest();
         reservationRequest.setDate(LocalDate.now());
         reservationRequest.setDebut(LocalTime.of(10, 0));
@@ -99,7 +99,7 @@ class ReservationControllerTest {
     }
 
     @Test
-    void testReserveSalleUnavailableSalleException() throws Exception {
+    void testReserveRoomsUnavailableSalleException() throws Exception {
         ReservationRequest reservationRequest = new ReservationRequest();
         reservationRequest.setDate(LocalDate.now());
         reservationRequest.setDebut(LocalTime.of(10, 0));
