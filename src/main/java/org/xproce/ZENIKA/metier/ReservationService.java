@@ -32,7 +32,6 @@ public class ReservationService {
             throw new InvalidTimeException("La fin doit être exactement une heure après le début.");
         }
 
-        // Check if debut is between 8h and 19h
         if (debut.isBefore(LocalTime.of(8, 0)) || debut.isAfter(LocalTime.of(19, 0))) {
             throw new InvalidTimeException("L'heure de début doit être entre 8h00 et 19h00.");
         }
@@ -57,7 +56,6 @@ public class ReservationService {
             LocalTime resDebut = reservation.getDebut();
             LocalTime resFin = reservation.getFin();
 
-            // Check for buffer overlap
             if (bufferStart.isBefore(resFin) && bufferEnd.isAfter(resDebut)) {
                 return false;
             }

@@ -15,7 +15,7 @@ public class SalleController {
     private SalleService salleService;
 
     @GetMapping
-    public List<Salle> getSalles(@RequestParam TypeReunion typeReunion, @RequestParam int nombrePersonnes) {
+    public List<Salle> getRooms(@RequestParam TypeReunion typeReunion, @RequestParam int nombrePersonnes) {
         return salleService.getAvailableSalles(typeReunion, nombrePersonnes);
     }
 }

@@ -13,7 +13,7 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @PostMapping
-    public ResponseEntity<String> reserveSalle(@RequestBody ReservationRequest reservationRequest) {
+    public ResponseEntity<String> reserveRooms(@RequestBody ReservationRequest reservationRequest) {
         reservationService.reserveSalle(
                 reservationRequest.getDate(),
                 reservationRequest.getDebut(),
