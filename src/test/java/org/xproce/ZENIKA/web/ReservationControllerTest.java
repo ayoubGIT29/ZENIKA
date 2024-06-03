@@ -1,4 +1,4 @@
-package org.xproce.ZENIKA.controller;
+package org.xproce.ZENIKA.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -7,11 +7,9 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,7 +21,6 @@ import org.xproce.ZENIKA.exception.UnavailableSalleException;
 import org.xproce.ZENIKA.metier.ReservationService;
 import org.xproce.ZENIKA.dao.entities.TypeReunion;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.xproce.ZENIKA.web.ReservationController;
 
 @WebMvcTest(ReservationController.class)
 class ReservationControllerTest {
@@ -36,9 +33,12 @@ class ReservationControllerTest {
 
     private ObjectMapper objectMapper;
 
+
+
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule()); // Register JavaTimeModule
     }
 
     @Test
