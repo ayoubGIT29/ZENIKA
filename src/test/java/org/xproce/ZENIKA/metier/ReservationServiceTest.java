@@ -64,7 +64,7 @@ class ReservationServiceTest {
         LocalDate date = LocalDate.now();
         LocalTime debut = LocalTime.of(10, 0);
         LocalTime fin = LocalTime.of(12, 0);  // Invalid, not exactly 1 hour after debut
-        TypeReunion typeReunion = TypeReunion.RC;
+        TypeReunion typeReunion = TypeReunion.VC;
         int nombrePersonnes = 10;
 
         InvalidTimeException exception = assertThrows(InvalidTimeException.class, () -> {
@@ -96,7 +96,7 @@ class ReservationServiceTest {
         LocalDate date = LocalDate.now();
         LocalTime debut = LocalTime.of(7, 0);  // Invalid, before 8h
         LocalTime fin = LocalTime.of(8, 0);
-        TypeReunion typeReunion = TypeReunion.SPEC;
+        TypeReunion typeReunion = TypeReunion.VC;
         int nombrePersonnes = 10;
 
         InvalidTimeException exception = assertThrows(InvalidTimeException.class, () -> {
@@ -105,4 +105,95 @@ class ReservationServiceTest {
 
         assertEquals("L'heure de début doit être entre 8h00 et 19h00.", exception.getMessage());
     }
+
+    @Test
+    void testReserveREUNIOnImpossible() {
+        LocalDate date = LocalDate.now();
+        LocalTime debut = LocalTime.of(10, 0);
+        LocalTime fin = LocalTime.of(11, 0);
+        TypeReunion typeReunion = TypeReunion.RC; // Invalid, there is no EQUIPEMENT compatible !
+        int nombrePersonnes = 10;
+
+        when(salleService.getAvailableSalles(typeReunion, nombrePersonnes)).thenReturn(Collections.emptyList());
+
+        UnavailableSalleException exception = assertThrows(UnavailableSalleException.class, () -> {
+            reservationService.reserveSalle(date, debut, fin, typeReunion, nombrePersonnes);
+        });
+
+        assertEquals("Salle non disponible pour la réservation demandée.", exception.getMessage());
+    }
+
+
+    @Test
+    void testReserveSalleUnavailableSalleExceptionPlus1H() {
+        LocalDate date = LocalDate.now();
+        LocalTime debut = LocalTime.of(11, 0);// Invalid, wait another Hour
+        LocalTime fin = LocalTime.of(12, 0);
+        TypeReunion typeReunion = TypeReunion.VC;
+        int nombrePersonnes = 10;
+
+        when(salleService.getAvailableSalles(typeReunion, nombrePersonnes)).thenReturn(Collections.emptyList());
+
+        UnavailableSalleException exception = assertThrows(UnavailableSalleException.class, () -> {
+            reservationService.reserveSalle(date, debut, fin, typeReunion, nombrePersonnes);
+        });
+
+        assertEquals("Salle non disponible pour la réservation demandée.", exception.getMessage());
+    }
+
+    @Test
+    void testReserveSalleUnavailableSalleExceptionMinus1H() {
+        LocalDate date = LocalDate.now();
+        LocalTime debut = LocalTime.of(9, 0);// Invalid, come an Hour earlier
+        LocalTime fin = LocalTime.of(10, 0);
+        TypeReunion typeReunion = TypeReunion.VC;
+        int nombrePersonnes = 10;
+
+        when(salleService.getAvailableSalles(typeReunion, nombrePersonnes)).thenReturn(Collections.emptyList());
+
+        UnavailableSalleException exception = assertThrows(UnavailableSalleException.class, () -> {
+            reservationService.reserveSalle(date, debut, fin, typeReunion, nombrePersonnes);
+        });
+
+        assertEquals("Salle non disponible pour la réservation demandée.", exception.getMessage());
+    }
+
+    @Test
+    void testReserveSalleSuccessAfterCleaning() {
+        LocalDate date = LocalDate.now();
+        LocalTime debut = LocalTime.of(12, 0);
+        LocalTime fin = LocalTime.of(13, 0);
+        TypeReunion typeReunion = TypeReunion.VC;
+        int nombrePersonnes = 10;
+
+        Salle salle = new Salle();
+        List<Salle> availableSalles = Collections.singletonList(salle);
+        when(salleService.getAvailableSalles(typeReunion, nombrePersonnes)).thenReturn(availableSalles);
+        when(reservationRepository.findByDateAndSalle(date, salle)).thenReturn(Collections.emptyList());
+
+        boolean result = reservationService.reserveSalle(date, debut, fin, typeReunion, nombrePersonnes);
+
+        assertTrue(result);
+        verify(reservationRepository, times(1)).save(any(Reservation.class));
+    }
+
+    @Test
+    void testReserveSalleSuccessBeforeCleaning() {
+        LocalDate date = LocalDate.now();
+        LocalTime debut = LocalTime.of(8, 0);
+        LocalTime fin = LocalTime.of(9, 0);
+        TypeReunion typeReunion = TypeReunion.VC;
+        int nombrePersonnes = 10;
+
+        Salle salle = new Salle();
+        List<Salle> availableSalles = Collections.singletonList(salle);
+        when(salleService.getAvailableSalles(typeReunion, nombrePersonnes)).thenReturn(availableSalles);
+        when(reservationRepository.findByDateAndSalle(date, salle)).thenReturn(Collections.emptyList());
+
+        boolean result = reservationService.reserveSalle(date, debut, fin, typeReunion, nombrePersonnes);
+
+        assertTrue(result);
+        verify(reservationRepository, times(1)).save(any(Reservation.class));
+    }
+
 }
