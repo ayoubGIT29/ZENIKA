@@ -1,4 +1,4 @@
-package org.xproce.ZENIKA.entities;
+package org.xproce.ZENIKA.dao.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

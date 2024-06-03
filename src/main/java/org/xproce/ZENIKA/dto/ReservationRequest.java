@@ -2,7 +2,7 @@ package org.xproce.ZENIKA.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.xproce.ZENIKA.entities.TypeReunion;
+import org.xproce.ZENIKA.dao.entities.TypeReunion;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

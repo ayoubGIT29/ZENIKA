@@ -2,10 +2,10 @@ package org.xproce.ZENIKA.metier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xproce.ZENIKA.entities.Equipement;
-import org.xproce.ZENIKA.entities.Salle;
-import org.xproce.ZENIKA.entities.TypeReunion;
-import org.xproce.ZENIKA.repositories.SalleRepository;
+import org.xproce.ZENIKA.dao.entities.Equipement;
+import org.xproce.ZENIKA.dao.entities.Salle;
+import org.xproce.ZENIKA.dao.entities.TypeReunion;
+import org.xproce.ZENIKA.dao.repositories.SalleRepository;
 
 import java.util.Arrays;
 import java.util.Collections;

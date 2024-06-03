@@ -2,11 +2,11 @@ package org.xproce.ZENIKA.metier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xproce.ZENIKA.entities.Reservation;
-import org.xproce.ZENIKA.entities.Salle;
-import org.xproce.ZENIKA.entities.TypeReunion;
-import org.xproce.ZENIKA.repositories.ReservationRepository;
-import org.xproce.ZENIKA.repositories.SalleRepository;
+import org.xproce.ZENIKA.dao.entities.Reservation;
+import org.xproce.ZENIKA.dao.entities.Salle;
+import org.xproce.ZENIKA.dao.entities.TypeReunion;
+import org.xproce.ZENIKA.dao.repositories.ReservationRepository;
+import org.xproce.ZENIKA.dao.repositories.SalleRepository;
 
 import org.xproce.ZENIKA.exception.InvalidTimeException;
 import org.xproce.ZENIKA.exception.UnavailableSalleException;

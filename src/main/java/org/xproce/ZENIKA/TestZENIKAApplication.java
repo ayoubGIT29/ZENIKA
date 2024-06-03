@@ -3,18 +3,18 @@ package org.xproce.ZENIKA;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.xproce.ZENIKA.entities.Equipement;
-import org.xproce.ZENIKA.entities.Salle;
-import org.xproce.ZENIKA.repositories.SalleRepository;
+import org.xproce.ZENIKA.dao.entities.Equipement;
+import org.xproce.ZENIKA.dao.entities.Salle;
+import org.xproce.ZENIKA.dao.repositories.SalleRepository;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 @SpringBootApplication
-public class TestGptApplication {
+public class TestZENIKAApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(TestGptApplication.class, args);
+        ApplicationContext context = SpringApplication.run(TestZENIKAApplication.class, args);
 
         SalleRepository salleRepository = context.getBean(SalleRepository.class);
 

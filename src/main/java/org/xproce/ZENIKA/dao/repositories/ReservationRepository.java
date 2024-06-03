@@ -1,8 +1,8 @@
-package org.xproce.ZENIKA.repositories;
+package org.xproce.ZENIKA.dao.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.xproce.ZENIKA.entities.Reservation;
-import org.xproce.ZENIKA.entities.Salle;
+import org.xproce.ZENIKA.dao.entities.Reservation;
+import org.xproce.ZENIKA.dao.entities.Salle;
 
 import java.time.LocalDate;
 import java.util.List;
